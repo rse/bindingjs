@@ -4,6 +4,8 @@
 BindingJS
 =========
 
+![Progress](http://progressed.io/bar/15)
+
 Summary
 -------
 
