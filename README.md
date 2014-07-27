@@ -15,12 +15,12 @@ Summary
     - Model-Agnostic (via arbitrary adapters)
     - Declarative    ("what", not "how")
 
-2. Core Concepts: 
+2. Core Concepts:
     - Fundamental Building-Blocks
     - Base Functionality
     - Essentially Required
 
-3. Convenience Concepts: 
+3. Convenience Concepts:
     - Increased Expressiveness
     - Increased Usability
     - Increased Acceptance
@@ -30,7 +30,7 @@ Binding Specification Variants
 
 ### Embedded
 
-<pre>&lt;<span class="marked">div</span> class="<span class="marked">list</span>" data-bind="<span class="marked">(persons) { text <- username }</span>"/&gt;
+<pre>&lt;<span class="marked">div</span> class="<span class="marked">list</span>" data-bind="<span class="marked">(persons) { text &lt;- username }</span>"/&gt;
 </pre>
 
 <ul>
@@ -40,9 +40,9 @@ Binding Specification Variants
     <li class="con">no easy syntax highlighting and checking (bindings are embedded DSL of markup language)</li>
 </ul>
 
-### Programmatic 
+### Programmatic
 
-<pre>BindingJS.create().binding("<span class="marked">div.list (persons) { text <- username }</span>")
+<pre>BindingJS.create().binding("<span class="marked">div.list (persons) { text &lt;- username }</span>")
 </pre>
 
 <ul>
@@ -53,7 +53,7 @@ Binding Specification Variants
 
 ### Separate
 
-<pre><span class="marked">div.list (persons) { text <- username }</span>
+<pre><span class="marked">div.list (persons) { text &lt;- username }</span>
 </pre>
 
 <ul>
@@ -73,7 +73,7 @@ Core Concepts
 
 <pre>
 <span class="marked">body &gt; ul</span> {
-    <span class="marked">li.item</span> { 
+    <span class="marked">li.item</span> {
         [...]
     }
 }
@@ -102,28 +102,28 @@ input {
 Naming:
 
 ```
-    on:blur +> value(def="foo") <- upper <- join(" ") <- title ?: "Mr.", firstname, lastname
-    
-    |--------------------------------------------------------------------------------------|  binding
-    |-----|    |--------------|                          |---------------------------------|  resource sequence
-                               |------------------------|                                     connector chain
-    |---------|                                                                               initiator
-           |--|                |--|     |--|         |--|                                     coupling
-    
-               |--------------|                          |------------|  |-------|  |------|  resource
-                                   |---|    |-------|                                         connector
-    
-               |--------------|    |---|    |-------|    |------------|  |-------|  |------|  expression
-                                   |---|    |-------|                                         pure-connector expression
-               |--------------|                                          |-------|  |------|  pure-adapter   expression
+on:blur +> value(def="foo") <- upper <- join(" ") <- title ?: "Mr.", firstname, lastname
 
-    Binding {
-        leftInitiator:    Resource*
-        leftResources:    Resource+
-        middleConnectors: Connector*
-        rightResources:   Resource+
-        rightInitiator:   Resource*
-    }
+|--------------------------------------------------------------------------------------|  binding
+|-----|    |--------------|                          |---------------------------------|  resource sequence
+                           |------------------------|                                     connector chain
+|---------|                                                                               initiator
+       |--|                |--|     |--|         |--|                                     coupling
+
+           |--------------|                          |------------|  |-------|  |------|  resource
+                               |---|    |-------|                                         connector
+
+           |--------------|    |---|    |-------|    |------------|  |-------|  |------|  expression
+                               |---|    |-------|                                         pure-connector expression
+           |--------------|                                          |-------|  |------|  pure-adapter   expression
+
+Binding {
+    leftInitiator:    Resource*
+    leftResources:    Resource+
+    middleConnectors: Connector*
+    rightResources:   Resource+
+    rightInitiator:   Resource*
+}
 ```
 
 Convenience Concepts
@@ -207,7 +207,7 @@ Binding Data Pools:
 - DOM Source Fragment (Template)
 - DOM Target Fragment
 - DOM Temporary Variable Pool
-- Presentation Model 
+- Presentation Model
 
 DOM Source Fragment (Template) Origin:
 - separated HTML template fragment string (to be parsed)
